@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { startClock, serverRenderClock } from '../store';
 import Examples from '../components/examples';
 import GridWrapper from '../components/GridWrapper';
-
+import Home from '../components/home'
+import { withRouter } from 'next/router'
+import '../styles/styles.scss';
 
 class Index extends React.Component {
   static getInitialProps({ reduxStore, req }) {
@@ -24,14 +26,22 @@ class Index extends React.Component {
 
 
   render() {
+  // const { query } = this.props.router.query;
+
     return (
       <>
-        <Examples />
+        {/*{*/}
+        {/* JSON.stringify(this.props)*/}
+        {/*}*/}
+        {/*<Examples />*/}
+        {/*<GridWrapper></GridWrapper>*/}
 
-        <GridWrapper></GridWrapper>
+        {/*<Home query={this.props.router.query}/>*/}
+        <Home/>
       </>
     );
   }
 }
 
+// export default connect()(withRouter(Index));
 export default connect()(Index);
