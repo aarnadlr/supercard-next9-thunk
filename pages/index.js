@@ -12,7 +12,7 @@ class Index extends React.Component {
     const isServer = !!req;
     reduxStore.dispatch(serverRenderClock(isServer));
 
-    return {};
+    // return {};
   }
 
   componentDidMount() {

@@ -1,5 +1,14 @@
 import Link from 'next/link';
-import { Box, Heading, Stack, Text, Image, Badge } from '@chakra-ui/core';
+import {
+  Box,
+  Flex,
+  Grid,
+  Heading,
+  Stack,
+  Text,
+  Image,
+  Badge
+} from '@chakra-ui/core';
 
 const HappyBirthday = () => {
   const property = {
@@ -19,67 +28,39 @@ const HappyBirthday = () => {
 
       <Heading size="xl">Happy Birthday Cards</Heading>
 
-      {/*<h2>H2 QUERY: {query && query.name}</h2>*/}
-      {/*<Heading as="h3" size="lg">*/}
-      {/*  Digital Greetings*/}
-      {/*</Heading>*/}
+      <Box bg={'gray.100'}></Box>
 
-      <Link href="/">
+      <Grid templateColumns="repeat(5, 1fr)" gap={6}>
 
+        <FlexCard>
+          <Text size="m">Happy Birthday Card 3</Text>
+        </FlexCard>
 
+        <FlexCard>
+          <Text size="m">Happy Birthday Card 3</Text>
+        </FlexCard>
 
-        <Box bg={'gray.200'} maxW={'200px'} h={'400px'} borderWidth="1px" rounded="lg" overflow="hidden">
+        <FlexCard>
+          <Text size="m">Happy Birthday Card 3</Text>
+        </FlexCard>
 
-
-          <Box p="6">
-            <Box d="flex" alignItems="baseline">
-                <Badge rounded="full" px="2" variantColor="teal">
-                  New
-                </Badge>
-                <Box
-                  color="gray.500"
-                  fontWeight="semibold"
-                  letterSpacing="wide"
-                  fontSize="xs"
-                  textTransform="uppercase"
-                  ml="2"
-                >
-                  {property.beds} beds &bull; {property.baths} baths
-                </Box>
-            </Box>
-
-            <Box
-              mt="1"
-              fontWeight="semibold"
-              as="h4"
-              lineHeight="tight"
-              isTruncated
-            >
-              {property.title}
-            </Box>
-
-            <Box>
-              {property.formattedPrice}
-              <Box as="span" color="gray.600" fontSize="sm">
-                / wk
-              </Box>
-            </Box>
-
-            <Box d="flex" mt="2" alignItems="center">
-              {Array(5)
-                .fill('')
-                .map((_, i) => '⭐️')}
-              <Box as="span" ml="2" color="gray.600" fontSize="sm">
-                {property.reviewCount} reviews
-              </Box>
-            </Box>
-          </Box>
-        </Box>
-
-
-      </Link>
+      </Grid>
     </div>
   );
 };
+
+import React from 'react';
+
+const FlexCard = ({ children }) => {
+  return (
+    <div>
+      <Flex justifyContent="center" alignItems="center" w="100%" h="200px" bg="lavender">
+        {children}
+      </Flex>
+    </div>
+  );
+};
+
+// export default FlexCard;
 
 export default HappyBirthday;
