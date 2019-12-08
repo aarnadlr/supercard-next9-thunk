@@ -60,23 +60,21 @@ const V1 = () => {
   const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
   const [customName, setCustomName] = useState('');
 
-  const submitRef = useRef();
+  const headingRef = useRef();
   const handleChange = e => setCustomName(e.target.value);
 
   useEffect(() => {
     onOpen();
-    submitRef.current.focus();
+    headingRef.current.style.transform = 'rotate(-6deg)';
   }, []);
 
   return (
     <div>
       {/*<Box>Happy birthday {router.query.name}</Box>*/}
       <Text color={'gray.500'}>(This is a cool Valentine's Day card)</Text>
-      <Heading ref={submitRef} fontSize={'96px'} color={'red.400'}>
+      <Heading ref={headingRef} fontSize={'64px'} color={'red.400'}>
         Happy Valentine's Day {customName}!
       </Heading>
-
-
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -108,12 +106,10 @@ const V1 = () => {
           </ModalBody>
 
           {/*<ModalFooter>*/}
-            {/*<Button variant="ghost">Secondary Action</Button>*/}
+          {/*<Button variant="ghost">Secondary Action</Button>*/}
           {/*</ModalFooter>*/}
         </ModalContent>
       </Modal>
-
-
 
       <div className={'footer'}>
         <Link href={'/happy-birthday'}>
@@ -122,7 +118,7 @@ const V1 = () => {
         <button onClick={onOpen}>Reopen the modal to customize the name</button>
 
         <Link href={'/checkout?selectedCard=v1&theme=valentines'}>
-        <button type="button">Yes, I want this card ➡️</button>
+          <button type="button">Yes, I want this card ➡️</button>
         </Link>
       </div>
 
@@ -139,7 +135,7 @@ const V1 = () => {
 				left:0
 			}
 			button{
-			font-size: 22px;
+        font-size: 14px;
 			`}</style>
     </div>
   );
