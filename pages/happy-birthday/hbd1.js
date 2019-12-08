@@ -60,19 +60,19 @@ const HBD1 = () => {
   const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
   const [customName, setCustomName] = useState('');
 
-  const submitRef = useRef();
+  const headingRef = useRef();
   const handleChange = e => setCustomName(e.target.value);
 
   useEffect(() => {
     onOpen();
-    submitRef.current.focus();
+    headingRef.current.style.transform = 'rotate(-6deg)'
   }, []);
 
   return (
     <div>
       {/*<Box>Happy birthday {router.query.name}</Box>*/}
       <Text color={'gray.500'}>(This is a cool birthday card)</Text>
-      <Heading ref={submitRef} fontSize={'96px'} color={'blue.200'}>
+      <Heading ref={headingRef} fontSize={'64px'} color={'blue.200'}>
         Happy birthday {customName}!
       </Heading>
 
@@ -139,7 +139,7 @@ const HBD1 = () => {
 				left:0
 			}
 			button{
-			font-size: 22px;
+			font-size: 14px;
 			`}</style>
     </div>
   );
