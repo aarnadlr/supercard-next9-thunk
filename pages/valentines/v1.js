@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import React, { useEffect, useState, useRef } from 'react';
+// import { useRouter } from 'next/router';
 import Link from 'next/link';
 import {
   Box,
@@ -20,7 +20,11 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  useTheme
+  useTheme,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText
 } from '@chakra-ui/core';
 
 // ROUTER OBJ: `router` object data:
@@ -50,22 +54,29 @@ import {
 // 	"events": {}
 // }
 
-const Option = () => {
-  const router = useRouter();
+const V1 = () => {
+  // const router = useRouter();
   const theme = useTheme();
   const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
-  const [customName, setCustomName] = useState('asher');
+  const [customName, setCustomName] = useState('');
 
+  const submitRef = useRef();
   const handleChange = e => setCustomName(e.target.value);
 
   useEffect(() => {
     onOpen();
+    submitRef.current.focus();
   }, []);
 
   return (
     <div>
       {/*<Box>Happy birthday {router.query.name}</Box>*/}
-      <Box>Happy birthday {customName}</Box>
+      <Text color={'gray.500'}>(This is a cool Valentine's Day card)</Text>
+      <Heading ref={submitRef} fontSize={'96px'} color={'red.400'}>
+        Happy Valentine's Day {customName}!
+      </Heading>
+
+
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -75,30 +86,44 @@ const Option = () => {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-<Flex flexDirection={'column'}>
-            <Text mb="8px">This is copy</Text>
-            <Input
-              onChange={handleChange}
-              placeholder="Here is a sample placeholder"
-              w={'initial'}
-              value={customName}
-              // size="sm"
-            />
+            <Flex flexDirection={'column'}>
+              <Text mb="8px">
+                Type in your friend's name below to see it displayed in the
+                selected card:
+              </Text>
+
+              <form onSubmit={onClose}>
+                <Input
+                  onChange={handleChange}
+                  placeholder="Recipient's name"
+                  w={'initial'}
+                  value={customName}
+                  // size="sm"
+                />
+                <Button variantColor="blue" mr={3} onClick={onClose}>
+                  Submit
+                </Button>
+              </form>
             </Flex>
           </ModalBody>
 
-          <ModalFooter>
-            <Button variantColor="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button variant="ghost">Secondary Action</Button>
-          </ModalFooter>
+          {/*<ModalFooter>*/}
+            {/*<Button variant="ghost">Secondary Action</Button>*/}
+          {/*</ModalFooter>*/}
         </ModalContent>
       </Modal>
 
+
+
       <div className={'footer'}>
-        <button type="button">⬅️GO back to options</button>
-        <button type="button">Yes, I want this one ➡️</button>
+        <Link href={'/happy-birthday'}>
+          <button type="button">⬅️ Go back to options</button>
+        </Link>
+        <button onClick={onOpen}>Reopen the modal to customize the name</button>
+
+        <Link href={'/checkout?selectedCard=v1&theme=valentines'}>
+        <button type="button">Yes, I want this card ➡️</button>
+        </Link>
       </div>
 
       <style>{`
@@ -120,4 +145,4 @@ const Option = () => {
   );
 };
 
-export default Option;
+export default V1;

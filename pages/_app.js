@@ -7,7 +7,7 @@ import theme from '../theme';
 
 class MyApp extends App {
   render() {
-    const { Component, pageProps, reduxStore } = this.props
+    const { Component, pageProps, reduxStore } = this.props;
     return (
       <Provider store={reduxStore}>
         <ThemeProvider theme={theme}>

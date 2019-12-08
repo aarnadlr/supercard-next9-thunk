@@ -8,12 +8,12 @@ import { withRouter } from 'next/router'
 import '../styles/styles.scss';
 
 class Index extends React.Component {
-  static getInitialProps({ reduxStore, req }) {
-    const isServer = !!req;
-    reduxStore.dispatch(serverRenderClock(isServer));
-
-    // return {};
-  }
+  // static getInitialProps({ reduxStore, req }) {
+  //   const isServer = !!req;
+  //   reduxStore.dispatch(serverRenderClock(isServer));
+  //
+  //   return {};
+  // }
 
   componentDidMount() {
     const { dispatch } = this.props;
@@ -26,17 +26,10 @@ class Index extends React.Component {
 
 
   render() {
-  // const { query } = this.props.router.query;
 
     return (
       <>
-        {/*{*/}
-        {/* JSON.stringify(this.props)*/}
-        {/*}*/}
-        {/*<Examples />*/}
-        {/*<GridWrapper></GridWrapper>*/}
 
-        {/*<Home query={this.props.router.query}/>*/}
         <Home/>
       </>
     );

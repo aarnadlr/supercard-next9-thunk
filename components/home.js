@@ -1,11 +1,11 @@
-import { Box, Heading, Stack, Text } from '@chakra-ui/core';
+import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/core';
 import Link from 'next/link';
 
 const Home = ({ query }) => {
   return (
     <div>
-      <Stack spacing={3}>
-        <Stack spacing={-6}>
+      <Flex direction={'column'}>
+        <Stack spacing={0}>
           <Heading as="h2" size="xl">
             Supercard
           </Heading>
@@ -22,16 +22,18 @@ const Home = ({ query }) => {
 
         <Link href="/happy-birthday">
           <a href="#">
-            <Text fontSize="2xl">Happy Birthday cards</Text>
+            <Text fontSize={'22px'}>Happy Birthday cards</Text>
           </a>
         </Link>
 
         <Link href="/valentines">
           <a href="#">
-            <Text fontSize="2xl">Valentine's Day cards</Text>
+            <Text fontSize="22px">Valentine's Day cards</Text>
           </a>
         </Link>
-      </Stack>
+
+
+      </Flex>
     </div>
   );
 };
