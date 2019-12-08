@@ -19,11 +19,11 @@ const customTheme = {
     // }
   },
 
-  // fonts: {
-  //   body: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-  //   heading: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-  //   mono: 'Menlo, monospace'
-  // },
+  fonts: {
+    body: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+    heading: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+    mono: 'Menlo, monospace'
+  },
 
   fontSizes: {
     xs: '12px',
@@ -47,7 +47,7 @@ const customTheme = {
     base: '1',
     shorter: '1.25',
     short: '1.375',
-    base: '1.5',
+    half: '1.5',
     tall: '1.625',
     taller: '2'
   },
