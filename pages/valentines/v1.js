@@ -113,26 +113,26 @@ const V1 = () => {
 
       <div className={'footer'}>
         <Link href={'/happy-birthday'}>
-          <button type="button">⬅️ Go back to options</button>
+          <div>⬅️ Go back to options</div>
         </Link>
-        <button onClick={onOpen}>Reopen the modal to customize the name</button>
+        <div onClick={onOpen}>Reopen the modal to customize the name</div>
 
         <Link href={'/checkout?selectedCard=v1&theme=valentines'}>
-          <button type="button">Yes, I want this card ➡️</button>
+          <div>Yes, I want this card ➡️</div>
         </Link>
       </div>
 
       <style>{`
 			.footer{
-			
-			display:flex;
-			justify-content: space-between;
+        display:flex;
+        justify-content: space-between;
 				background: gray;
 				height: 40px;
 				width: 100%;
 				position: absolute;
 				bottom:0;
-				left:0
+				left:0;
+				flex-wrap: wrap;
 			}
 			button{
         font-size: 14px;
