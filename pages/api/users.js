@@ -6,7 +6,12 @@ const mongoose = require('mongoose');
 const db = process.env.MONGODB_URI;
 
 
-const User = require('../../models/User');
+const UserSchema = require('../../models/User');
+
+// Serverless solution: CHECK: if the model exists, then use it, else create it.
+export const User = mongoose.models.User || mongoose.model('User', UserSchema);
+
+
 // const User = mongoose.model('User');
 
 // Create cached connection variable
