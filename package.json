@@ -2,6 +2,7 @@
   "name": "with-redux",
   "version": "1.0.0",
   "scripts": {
+    "test": "jest",
     "dev": "next",
     "build": "next build",
     "start": "next start"
@@ -24,6 +25,10 @@
   },
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "7.7.5",
+    "@testing-library/react": "9.3.2",
+    "babel-jest": "24.9.0",
+    "jest": "24.9.0",
     "node-sass": "4.13.0"
   }
 }
