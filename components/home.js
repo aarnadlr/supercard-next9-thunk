@@ -1,7 +1,20 @@
 import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/core';
 import Link from 'next/link';
+import { useEffect } from 'react';
+import fetch from 'isomorphic-unfetch';
 
 const Home = () => {
+
+
+  useEffect(() => {
+    fetch('/api/users')
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      });
+  }, []);
+
+
   return (
     <div>
       <Flex direction={'column'}>
@@ -28,8 +41,6 @@ const Home = () => {
             <Text fontSize="22px">Valentine's Day cards</Text>
           </a>
         </Link>
-
-
       </Flex>
     </div>
   );
