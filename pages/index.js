@@ -8,22 +8,21 @@ import { withRouter } from 'next/router'
 // import '../styles/styles.scss';
 
 class Index extends React.Component {
-  static getInitialProps({ reduxStore, req }) {
-    const isServer = !!req;
-    reduxStore.dispatch(serverRenderClock(isServer));
+  // static getInitialProps({ reduxStore, req }) {
+  //   const isServer = !!req;
+  //   reduxStore.dispatch(serverRenderClock(isServer));
+  //
+  //   return {};
+  // }
 
-    return {};
-  }
+  // componentDidMount() {
+    // const { dispatch } = this.props;
+    // this.timer = startClock(dispatch);
+  // }
 
-  componentDidMount() {
-    const { dispatch } = this.props;
-    this.timer = startClock(dispatch);
-
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timer);
-  }
+  // componentWillUnmount() {
+  //   clearInterval(this.timer);
+  // }
 
 
   render() {
@@ -38,3 +37,4 @@ class Index extends React.Component {
 
 // export default connect()(withRouter(Index));
 export default connect()(Index);
+// export default Index;

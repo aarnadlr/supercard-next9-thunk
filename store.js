@@ -1,19 +1,20 @@
-import { createStore, applyMiddleware } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import thunkMiddleware from 'redux-thunk'
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunkMiddleware from 'redux-thunk';
 
 const exampleInitialState = {
   lastUpdate: 0,
   light: false,
-  count: 0,
-}
+  count: 0
+};
 
 export const actionTypes = {
   TICK: 'TICK',
   INCREMENT: 'INCREMENT',
   DECREMENT: 'DECREMENT',
   RESET: 'RESET',
-}
+  DATA_FETCHED: 'DATA FETCHED'
+};
 
 // REDUCERS
 export const reducer = (state = exampleInitialState, action) => {
@@ -21,52 +22,57 @@ export const reducer = (state = exampleInitialState, action) => {
     case actionTypes.TICK:
       return Object.assign({}, state, {
         lastUpdate: action.ts,
-        light: !!action.light,
-      })
+        light: !!action.light
+      });
     case actionTypes.INCREMENT:
       return Object.assign({}, state, {
-        count: state.count + 1,
-      })
+        count: state.count + 1
+      });
     case actionTypes.DECREMENT:
       return Object.assign({}, state, {
-        count: state.count - 1,
-      })
+        count: state.count - 1
+      });
     case actionTypes.RESET:
       return Object.assign({}, state, {
-        count: exampleInitialState.count,
-      })
+        count: exampleInitialState.count
+      });
+    case actionTypes.DATA_FETCHED:
+      return Object.assign({}, state, {
+        mongo: action.payload
+      });
+
     default:
-      return state
+      return state;
   }
-}
+};
 
 // ACTIONS
 export const serverRenderClock = isServer => dispatch => {
-  return dispatch({ type: actionTypes.TICK, light: !isServer, ts: Date.now() })
-}
+  return dispatch({ type: actionTypes.TICK, light: !isServer, ts: Date.now() });
+};
 
 export const startClock = dispatch => {
   return setInterval(() => {
-    dispatch({ type: actionTypes.TICK, light: true, ts: Date.now() })
-  }, 1000)
-}
+    dispatch({ type: actionTypes.TICK, light: true, ts: Date.now() });
+  }, 1000);
+};
 
 export const incrementCount = () => {
-  return { type: actionTypes.INCREMENT }
-}
+  return { type: actionTypes.INCREMENT };
+};
 
 export const decrementCount = () => {
-  return { type: actionTypes.DECREMENT }
-}
+  return { type: actionTypes.DECREMENT };
+};
 
 export const resetCount = () => {
-  return { type: actionTypes.RESET }
-}
+  return { type: actionTypes.RESET };
+};
 
 export function initializeStore(initialState = exampleInitialState) {
   return createStore(
     reducer,
     initialState,
     composeWithDevTools(applyMiddleware(thunkMiddleware))
-  )
+  );
 }
