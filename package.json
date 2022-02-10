@@ -33,6 +33,6 @@
     "babel-jest": "24.9.0",
     "ignore-loader": "0.1.2",
     "jest": "24.9.0",
-    "node-sass": "4.13.0"
+    "node-sass": "7.0.0"
   }
 }
